@@ -11,10 +11,12 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User {
 
     @Id
     @NotBlank(message = "Username is mandatory")
+    @Column(nullable = false, unique = true, updatable = false)
     private String username;
 
     @NotBlank(message = "Password is mandatory")
@@ -26,9 +28,11 @@ public class User {
 
     @Email(message = "Email should be valid")
     @NotBlank(message = "Email is mandatory")
+    @Column(unique = true)
     private String email;
 
     @Pattern(regexp = "^\\+?[0-9. ()-]{7,25}$", message = "Phone number is invalid")
+    @Column(unique = true)
     private String phone;
 
     @Enumerated(EnumType.STRING)
@@ -38,5 +42,6 @@ public class User {
     @Embedded
     @NotNull(message = "Address is mandatory")
     private Address address;
+
 
 }
