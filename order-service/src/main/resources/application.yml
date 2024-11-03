@@ -1,0 +1,19 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: ORDER-SERVICE
+  data:
+    mongodb:
+      uri: mongodb://admin:admin%40123@localhost:1103/OrderDB?authSource=admin
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    hibernate:
+        ddl-auto: update
+
+
+
